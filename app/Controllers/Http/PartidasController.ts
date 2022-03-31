@@ -31,6 +31,19 @@ export default class PartidasController {
     }
   }
 
+  public async InsertarBarcos({request, response}){
+    try{
+      const partida = request.input('partida')
+      const fila = request.input('fila')
+      const columna = request.input('columna')
+
+      await Partidas.updateMany({partida: partida, fila: fila, columna: columna}, {$set:{barco: true}})
+    }
+    catch(error){
+      response.status(500).json({message: 'ocurrio un error'})
+    }
+  }
+
   public async show({}: HttpContextContract) {}
 
   public async edit({}: HttpContextContract) {}

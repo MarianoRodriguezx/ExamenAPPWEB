@@ -26,6 +26,8 @@ Route.get('/', async () => {
 
 Route.resource('partida', 'PartidasController')
 
+Route.post('insertarBarco', 'PartidasController.InsertarBarcos')
+
 Route.post('login', 'UsersController.login');
 Route.post('logout', 'UsersController.logout');
 Route.post('signup', 'UsersController.signup');

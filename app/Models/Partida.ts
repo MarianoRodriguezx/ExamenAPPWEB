@@ -1,7 +1,6 @@
 import { DateTime } from 'luxon'
 import { BaseModel, BelongsTo, belongsTo, column, HasMany, hasMany } from '@ioc:Adonis/Lucid/Orm'
 import user from './user'
-import hashConfig from 'Config/hash'
 import DetallePartida from './DetallePartida'
 
 export default class Partida extends BaseModel {

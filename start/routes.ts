@@ -24,9 +24,12 @@ Route.get('/', async () => {
   return { hello: 'world' }
 })
 
-Route.resource('partida', 'PartidasController')
+Route.group(()=>{
+  Route.resource('partida', 'PartidasController')
 
-Route.post('insertarBarco', 'PartidasController.InsertarBarcos')
+  Route.post('insertarBarco', 'PartidasController.InsertarBarcos')
+
+}).middleware(['auth'])
 
 Route.post('login', 'UsersController.login');
 Route.post('logout', 'UsersController.logout');

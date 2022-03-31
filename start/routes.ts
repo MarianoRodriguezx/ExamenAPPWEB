@@ -26,11 +26,15 @@ Route.get('/', async () => {
 
 Route.group(()=>{
   Route.resource('partida', 'PartidasController')
+  Route.resource('detalle_partida', 'DetallePartidasController')
 
   Route.post('insertarBarco', 'PartidasController.InsertarBarcos')
+  Route.post('insertarAtacante', 'PartidasController.InsertarAtacante')
+  Route.get('verCuadrilla/:id', 'PartidasController.Cuadricula')
+  Route.post('logout', 'UsersController.logout');
 
 }).middleware(['auth'])
 
+
 Route.post('login', 'UsersController.login');
-Route.post('logout', 'UsersController.logout');
 Route.post('signup', 'UsersController.signup');

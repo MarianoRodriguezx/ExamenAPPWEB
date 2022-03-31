@@ -2,6 +2,7 @@ import { DateTime } from 'luxon'
 import Hash from '@ioc:Adonis/Core/Hash'
 import { column, beforeSave, BaseModel, hasMany, HasMany } from '@ioc:Adonis/Lucid/Orm'
 import Partida from './Partida'
+import DetallePartida from './DetallePartida'
 
 export default class user extends BaseModel {
   @column({ isPrimary: true })
@@ -43,4 +44,10 @@ export default class user extends BaseModel {
     localKey: 'id'
   })
   public user2: HasMany<typeof Partida>
+
+  @hasMany(()=> DetallePartida, {
+    foreignKey: 'ganador',
+    localKey: 'id'
+  })
+  public ganador: HasMany<typeof DetallePartida>
 }

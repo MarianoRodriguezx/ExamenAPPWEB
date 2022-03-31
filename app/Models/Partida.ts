@@ -1,6 +1,8 @@
 import { DateTime } from 'luxon'
-import { BaseModel, BelongsTo, belongsTo, column } from '@ioc:Adonis/Lucid/Orm'
+import { BaseModel, BelongsTo, belongsTo, column, HasMany, hasMany } from '@ioc:Adonis/Lucid/Orm'
 import user from './user'
+import hashConfig from 'Config/hash'
+import DetallePartida from './DetallePartida'
 
 export default class Partida extends BaseModel {
   @column({ isPrimary: true })
@@ -30,5 +32,11 @@ export default class Partida extends BaseModel {
     foreignKey: 'jugador2'
   })
   public Jugador2: BelongsTo<typeof user>
+
+  @hasMany(()=> DetallePartida, {
+    foreignKey: 'partida',
+    localKey: 'id'
+  })
+  public DetallePartida: HasMany<typeof DetallePartida>
 
 }

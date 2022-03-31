@@ -44,6 +44,33 @@ export default class PartidasController {
     }
   }
 
+  public async InsertarAtacante({request, response}){
+    try{
+      const partida = request.input('partida')
+      const fila = request.input('fila')
+      const columna = request.input('columna')
+      const atacante = request.input('atacante')
+
+      await Partidas.updateMany({partida: partida, fila: fila, columna: columna}, {$set:{atacante: atacante}})
+    }
+    catch(error){
+      response.status(500).json({message: 'ocurrio un error'})
+    }
+  }
+
+  public async Cuadricula({response, params}){
+    try{
+      const cuadrilla = await Partidas.find({partida: params.id})
+
+      return cuadrilla
+    }
+    catch(error){
+      response.status(500).json({message: 'ocurrio un error'})
+    }
+  }
+
+  
+
   public async show({}: HttpContextContract) {}
 
   public async edit({}: HttpContextContract) {}
